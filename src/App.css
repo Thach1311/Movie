@@ -1,11 +1,10 @@
-body{
-    padding:0;
+body {
+    padding: 0;
     margin: 0;
     border: 0;
     box-sizing: border-box;
 }
-:root{
-    --color-white: rgb(220,220,218);
-    --color-background: rgb(17,17,17);
-    --color-font: #fff;
+:root {
+    --color-white: rgb(220, 220, 218);
+    --color-background: rgb(17, 17, 17);
 }
