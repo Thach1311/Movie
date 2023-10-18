@@ -14,6 +14,7 @@ function Intro() {
                 height="100%"
                 volume={1}
                 muted={isMuted}
+                loop={true}
                 url="https://vimeo.com/575947052"
                 className={cx('videoIntro')}
             />

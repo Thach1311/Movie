@@ -1,0 +1,67 @@
+.navigaTion {
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+@media only screen and (max-width: 600px) {
+  .navigaTion {
+    height: 100px;
+  }
+}
+
+.navContainer {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .navContainer {
+    flex-direction: column;
+  }
+}
+
+.logo {
+  width: 120px;
+  cursor: pointer;
+}
+.logo img {
+  width: 100%;
+}
+
+.navSearch {
+  display: flex;
+  align-items: center;
+}
+.navSearch:hover .iconSearch {
+  color: var(--color-white);
+}
+.navSearch .iconSearch {
+  color: #bbb;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transform: translateX(20px);
+}
+.navSearch input {
+  font-size: 14px;
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+  border-style: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px 10px 10px 30px;
+  width: 0px;
+  cursor: pointer;
+  opacity: 0;
+}
+.navSearch input:focus {
+  padding-left: 26px;
+  width: 250px;
+  cursor: text;
+  border-radius: 4px;
+  opacity: 1;
+  transition: width 0.5s;
+}/*# sourceMappingURL=Navbar.module.css.map */
