@@ -6,12 +6,12 @@ import Menu from './components/Menu/Menu';
 function App() {
     return (
         <div className="App">
-          <>
-            <Navbar></Navbar>
-            <Intro></Intro>
-            <Contents/>
-            <Menu/>
-          </>
+            <>
+                <Navbar></Navbar>
+                <Intro></Intro>
+                <Contents />
+                <Menu />
+            </>
         </div>
     );
 }

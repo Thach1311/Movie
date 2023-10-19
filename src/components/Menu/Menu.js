@@ -17,7 +17,7 @@ function Menu() {
             <MenuItems name="Actions Movies" Icon={GiNinjaHeroicStance} />
             <MenuItems name="Comedy Movies" Icon={MdTheaterComedy} />
             <MenuItems name="Romance Movies" Icon={BiSolidGhost} />
-            <MenuItems name="Romance Movies" Icon={GiRomanToga} />
+            <MenuItems name="Horor Movies" Icon={GiRomanToga} />
             <MenuItems name="Documentaries" Icon={GiBandageRoll} />
         </div>
     );
