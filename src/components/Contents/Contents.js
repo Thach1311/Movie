@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './Contents.module.scss';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { SmoothHorizontalScrolling } from '../../utils/index';
+import styled from 'styled-components';
 const cx = classNames.bind(styles);
 export const movies = [
     'https://www.whats-on-netflix.com/wp-content/uploads/covers/alive.jpeg',
@@ -23,16 +24,16 @@ export const movies = [
 function Contents() {
     const slideRef = useRef();
     const movieRef = useRef();
-    const [dragDown,setDragDown] = useState(0)
-    const [dragMove,setDragMove] = useState(0)
-    const [isDrag,setIsDrag] = useState(false)
+    const [dragDown, setDragDown] = useState(0);
+    const [dragMove, setDragMove] = useState(0);
+    const [isDrag, setIsDrag] = useState(false);
 
-    useEffect( ()=> {
-        if (isDrag){
-            if (dragMove < dragDown) handleScrollRight()
-            if (dragMove > dragDown) handleScrollLeft()
+    useEffect(() => {
+        if (isDrag) {
+            if (dragMove < dragDown) handleScrollRight();
+            if (dragMove > dragDown) handleScrollLeft();
         }
-    },[dragDown,dragMove,isDrag])
+    }, [dragDown, dragMove, isDrag]);
 
     const handleScrollRight = () => {
         const maxScrollLeft = slideRef.current.scrollWidth - slideRef.current.clientWidth;
@@ -40,7 +41,7 @@ function Contents() {
             SmoothHorizontalScrolling(
                 slideRef.current,
                 250,
-                movieRef.current.clientWidth * 2,
+                movieRef.current.clientWidth * 1.5,
                 slideRef.current.scrollLeft,
             );
         }
@@ -50,28 +51,27 @@ function Contents() {
             SmoothHorizontalScrolling(
                 slideRef.current,
                 250,
-                -movieRef.current.clientWidth * 2,
+                -movieRef.current.clientWidth * 1.5,
                 slideRef.current.scrollLeft,
             );
         }
     };
 
     const onDragStart = (e) => {
-       setIsDrag(true)
-       setDragDown(e.screenX)
+        setIsDrag(true);
+        setDragDown(e.screenX);
     };
     const onDragEnd = (e) => {
-        setIsDrag(false)
+        setIsDrag(false);
     };
     const onDragEnter = (e) => {
-       setDragMove(e.screenX)
+        setDragMove(e.screenX);
     };
     return (
         <div className={cx('MoviesRowContainer')} draggable="fasle">
             <h1 className={cx('heading')}>Netflix Originals</h1>
-            <div
+            <MovieSlider
                 className={cx('movieSlider')}
-                style={{ gridTemplateColumns: `repeat(${movies.length},300px)` }}
                 ref={slideRef}
                 draggable="true"
                 onDragStart={onDragStart}
@@ -79,12 +79,12 @@ function Contents() {
                 onDragEnter={onDragEnter}
             >
                 {movies.map((movie, index) => (
-                    <div key={index} className={cx('movieItem')} ref={movieRef} draggable= 'false'>
+                    <div key={index} className={cx('movieItem')} ref={movieRef} draggable="false">
                         <img src={movie} alt={movie} draggable="false" />
                         <div className={cx('movieName')}>Movie Name</div>
                     </div>
                 ))}
-            </div>
+            </MovieSlider>
 
             <div className={cx('btnLeft')} onClick={() => handleScrollLeft()}>
                 <AiOutlineLeft />
@@ -96,5 +96,70 @@ function Contents() {
         </div>
     );
 }
-
 export default Contents;
+
+const MovieSlider = styled.div`
+    display: grid;
+    gap: 6px;
+    grid-template-columns: repeat(${movies.length}, 350px);
+    transform: all 0.3s linear;
+    overflow-y: hidden;
+    overflow-x: auto;
+    overflow: hidden;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    scroll-behavior: smooth;
+    cursor: pointer;
+    &:hover .movieItem {
+        opacity: 0.5;
+    }
+
+    .movieItem {
+        transform: scale(1);
+        max-width: 400px;
+        max-height: 500px;
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s linear;
+        user-select: none;
+        overflow: hidden;
+        border-radius: 6px;
+        transform: center left;
+        position: relative;
+
+        &:hover {
+            transform: scale(1.1);
+            z-index: 10;
+            opacity: 1;
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .movieName {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 4px;
+        text-align: center;
+        font-size: 14px;
+        background-color: rgb(0, 0, 0, 0.65);
+    }
+    @media screen and (max-width: 1200px) {
+        grid-template-columns: repeat(${movies.length}, 300px);
+    }
+    @media screen and (max-width: 992px) {
+        grid-template-columns: repeat(${movies.length}, 250px);
+    }
+    @media screen and (max-width: 786px) {
+        grid-template-columns: repeat(${movies.length}, 200px);
+    }
+    @media screen and (max-width: 600px) {
+        grid-template-columns: repeat(${movies.length}, 150px);
+    }
+`;
