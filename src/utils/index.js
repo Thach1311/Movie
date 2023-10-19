@@ -13,3 +13,11 @@ export function SmoothHorizontalScrolling(e, time, amount, start) {
 function SHS_B(e, sc, eAmt, start, y) {
     e.scrollLeft = eAmt * sc + start;
 }
+
+export function randomRgbaColor() {
+    const R = Math.round(Math.random() * 256);
+    const G = Math.round(Math.random() * 256);
+    const B = Math.round(Math.random() * 256);
+    let color = `rgba(${R},${G},${B})`;
+    return color;
+}
