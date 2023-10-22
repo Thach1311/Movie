@@ -101,19 +101,28 @@ function MoviesRow(props) {
                         : {}
                 }
             >
-                {movies.map((movie, index) => (
-                    <div key={index} className={cx('movieItem')} ref={movieRef} draggable="false">
-                        <img src={movie} alt={movie} draggable="false" />
-                        <div className={cx('movieName')}>Movie Name</div>
-                    </div>
-                ))}
+                {movies &&
+                    movies.length > 0 &&
+                    movies.map((movie, index) => {
+                        if (movie.poster_path && movie.backdrop_path !== null) {
+                            let imageUrl = isNetFlix
+                                ? `http://image.tmdb.org/t/p/original/${movie.poster_path}`
+                                : `http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`;
+                            return (
+                                <div key={index} className={cx('movieItem')} ref={movieRef} draggable="false">
+                                    <img src={imageUrl} alt={movie} draggable="false" />
+                                    <div className={cx('movieName')}>{movie.title || movie.name}</div>
+                                </div>
+                            );
+                        }
+                    })}
             </MovieSlider>
 
-            <div className={cx(`btnLeft ${isNetFlix && "isNetFlix"}`)} onClick={() => handleScrollLeft()}>
+            <div className={cx(`btnLeft ${isNetFlix && 'isNetFlix'}`)} onClick={() => handleScrollLeft()}>
                 <AiOutlineLeft />
             </div>
 
-            <div className={cx(`btnRight ${isNetFlix && 'isNetflix'}`)} onClick={() => handleScrollRight()}>
+            <div className={cx(`btnRight ${isNetFlix && 'isNetFlix'}`)} onClick={() => handleScrollRight()}>
                 <AiOutlineRight />
             </div>
         </MoviesRowContainer>
@@ -121,9 +130,8 @@ function MoviesRow(props) {
 }
 export default MoviesRow;
 
-
-const MoviesRowContainer = styled.div `
-background-color: var(--color-background);
+const MoviesRowContainer = styled.div`
+    background-color: var(--color-background);
     color: var(--color-white);
     padding-top: 20px;
     padding-right: 20px;
@@ -189,9 +197,7 @@ background-color: var(--color-background);
             width: max-content;
         }
     }
-
-`
-
+`;
 
 const MovieSlider = styled.div`
     display: grid;
