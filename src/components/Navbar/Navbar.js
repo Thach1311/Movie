@@ -2,7 +2,7 @@ import NetflixLogo from '../../assets/images/logo.png';
 import { MdSearch } from 'react-icons/md';
 import classNames from 'classnames/bind';
 import styles from './Navbar.module.scss';
-import useScrollY from '../hooks/useScrollY';
+import {useScrollY} from '../hooks';
 const cx = classNames.bind(styles);
 function Navbar() {
     const [scrollY] = useScrollY();

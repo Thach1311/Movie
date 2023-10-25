@@ -24,7 +24,7 @@ const cx = classNames.bind(styles);
 //     'https://occ-0-1068-92.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABWhrU7MA-1ZpbsUK_KyceOQWlMew9MX0Q9IdtcISoOvRU1kFqlb1uUDZ5jGx_bHe2eEl2jnPviyEpj9PcZp5FZ3RH9Y-.jpg?r=266',
 // ];
 function MoviesRow(props) {
-    const { movies, title, isNetFlix } = props;
+    const { movies, title, isNetFlix, idSection } = props;
 
     const slideRef = useRef();
     const movieRef = useRef();
@@ -73,7 +73,7 @@ function MoviesRow(props) {
         setDragMove(e.screenX);
     };
     return (
-        <MoviesRowContainer className={cx('MoviesRowContainer')} draggable="fasle">
+        <MoviesRowContainer className={cx('MoviesRowContainer')} draggable="fasle" id={idSection}>
             <h1 className={cx('heading')}>{title}</h1>
             <MovieSlider
                 className={cx('movieSlider')}

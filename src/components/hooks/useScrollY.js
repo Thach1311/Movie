@@ -1,5 +1,5 @@
-import { useState,useEffect } from "react";
-function useScrollY() {
+import { useState, useEffect } from 'react';
+export const useScrollY = () => {
     const [scrollY, setScrollY] = useState(0);
     const handelScrollY = () => {
         const scrollY = window.scrollY || document.documentElement.scrollTop;
@@ -12,7 +12,5 @@ function useScrollY() {
             window.removeEventListener('scroll', handelScrollY);
         };
     }, []);
-    return [scrollY]
-}
-
-export default useScrollY;
+    return [scrollY];
+};
