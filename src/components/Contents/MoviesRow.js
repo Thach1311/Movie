@@ -5,6 +5,7 @@ import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { SmoothHorizontalScrolling } from '../../utils/index';
 import styled from 'styled-components';
 import { useViewport } from '../hooks';
+
 const cx = classNames.bind(styles);
 
 // export const movies = [
