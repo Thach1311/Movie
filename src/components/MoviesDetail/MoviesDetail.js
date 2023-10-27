@@ -1,36 +1,51 @@
+import { useDispatch } from 'react-redux';
+import { setMovieDetail } from '../store/actions';
 import styles from './MoviesDetail.module.scss';
 import classNames from 'classnames/bind';
+import moment from 'moment/moment';
 const cx = classNames.bind(styles);
 export const showModal = true;
-function MoviesDetail() {
+function MoviesDetail(props) {
+    const { movie, showModal } = props;
+    const dispatch = useDispatch();
+    const handleCloseModal = () => {
+        dispatch(setMovieDetail(null));
+    };
+
     return (
         <>
             <div className={cx('MoviesDetailModal')}>
-                <div className={cx(`backdrop`, `${showModal ? 'showBackdrop' : 'hideBackdrop'}`)}></div>
+                <div
+                    className={cx(`backdrop`, `${showModal ? 'showBackdrop' : 'hideBackdrop'}`)}
+                    onClick={() => handleCloseModal()}
+                ></div>
                 <div
                     className={cx(`modal`, `${showModal ? 'showModal' : 'hideModal'}`)}
-                    style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/original//4fLZUr1e65hKPPVw0R3PmKFKxj1.jpg)`,
-                        backgroundSize: 'cover',
-                    }}
+                    style={
+                        movie
+                            ? {
+                                  backgroundImage: `url(https://image.tmdb.org/t/p/original/${
+                                      movie.backdrop_path || movie.poster_path
+                                  })`,
+                                  backgroundSize: 'cover',
+                              }
+                            : {}
+                    }
                 >
                     <div className={cx('container')}>
                         <div className={cx('movieInfo')}>
-                            <h1 className={cx('movieTitle')}>The Witcher</h1>
+                            <h1 className={cx('movieTitle')}>{movie && (movie.title || movie.name)}</h1>
                             <p className={cx('statistical')}>
-                                <span className={cx('rating')}>Rating: 82%</span>
-                                <span className={cx('popularity')}>Popularity: 123.456</span>
+                                <span className={cx('rating')}>Rating: {movie && movie.vote_average * 10}%</span>
+                                <span className={cx('popularity')}>Popularity: {movie && movie.popularity}</span>
                             </p>
-                            <p className={cx('releaseDate')}>release Date: 21/12/2023</p>
-                            <p className={cx('runtime')}>Runtime: 123</p>
-                            <p className={cx('overview')}>
-                                Between the events of 'Saw' and 'Saw II', a sick and desperate John Kramer travels to
-                                Mexico for a risky and experimental medical procedure in hopes of a miracle cure for his
-                                cancer, only to discover the entire operation is a scam to defraud the most vulnerable.
-                                Armed with a newfound purpose, the infamous serial killer returns to his work, turning
-                                the tables on the con artists in his signature visceral way through devious, deranged,
-                                and ingenious traps.
+                            <p className={cx('releaseDate')}>
+                                Release Date:{' '}
+                                {(movie && moment(movie.release_date).format('DD/MM/YYYY')) ||
+                                    (movie && moment(movie.first_air_date).format('DD/MM/YYYY'))}
                             </p>
+                            {/* <p className={cx('runtime')}>Runtime:{movie && movie.runtime}</p> */}
+                            <p className={cx('overview')}>{movie && movie.overview}</p>
                         </div>
                     </div>
                 </div>

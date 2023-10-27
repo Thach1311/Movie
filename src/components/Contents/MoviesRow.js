@@ -5,6 +5,8 @@ import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { SmoothHorizontalScrolling } from '../../utils/index';
 import styled from 'styled-components';
 import { useViewport } from '../hooks';
+import { useDispatch } from 'react-redux';
+import { setMovieDetail } from '../store/actions';
 
 const cx = classNames.bind(styles);
 
@@ -33,6 +35,11 @@ function MoviesRow(props) {
     const [dragMove, setDragMove] = useState(0);
     const [isDrag, setIsDrag] = useState(false);
     const [windowWidth] = useViewport();
+
+    const dispatch = useDispatch();
+    const handleSetMovie = (movie) => {
+        dispatch(setMovieDetail(movie));
+    };
 
     useEffect(() => {
         if (isDrag) {
@@ -110,7 +117,13 @@ function MoviesRow(props) {
                                 ? `http://image.tmdb.org/t/p/original/${movie.poster_path}`
                                 : `http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`;
                             return (
-                                <div key={index} className={cx('movieItem')} ref={movieRef} draggable="false">
+                                <div
+                                    key={index}
+                                    className={cx('movieItem')}
+                                    ref={movieRef}
+                                    draggable="false"
+                                    onClick={() => handleSetMovie(movie)}
+                                >
                                     <img src={imageUrl} alt={movie} draggable="false" />
                                     <div className={cx('movieName')}>{movie.title || movie.name}</div>
                                 </div>
