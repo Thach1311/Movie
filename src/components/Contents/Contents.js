@@ -35,7 +35,7 @@ function Contents(props) {
         dispatch(ACTIONS.getDocumentaries());
     }, [dispatch]);
 
-    console.log(NetflixOriginals);
+    // console.log(NetflixOriginals);
     return (
         <div>
             <MoviesRows idSection = 'netFlix' movies={NetflixOriginals} title="Netflix Originals" isNetFlix={true} />
