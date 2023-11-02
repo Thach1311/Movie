@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Thach1311/Movie.git/static/css/main.ddbe4174.css",
-    "main.js": "/Thach1311/Movie.git/static/js/main.e16e5461.js",
-    "index.html": "/Thach1311/Movie.git/index.html",
-    "main.ddbe4174.css.map": "/Thach1311/Movie.git/static/css/main.ddbe4174.css.map",
-    "main.e16e5461.js.map": "/Thach1311/Movie.git/static/js/main.e16e5461.js.map"
+    "main.css": "/Movie/static/css/main.ddbe4174.css",
+    "main.js": "/Movie/static/js/main.a50ffa22.js",
+    "index.html": "/Movie/index.html",
+    "main.ddbe4174.css.map": "/Movie/static/css/main.ddbe4174.css.map",
+    "main.a50ffa22.js.map": "/Movie/static/js/main.a50ffa22.js.map"
   },
   "entrypoints": [
     "static/css/main.ddbe4174.css",
-    "static/js/main.e16e5461.js"
+    "static/js/main.a50ffa22.js"
   ]
 }
