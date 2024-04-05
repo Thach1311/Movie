@@ -1,0 +1,42 @@
+.checkbox {
+  display: none;
+}
+
+.slider {
+  width: 30px;
+  height: 15px;
+  background-color: lightgray;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border: 2px solid transparent;
+  transition: 0.3s;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25) inset;
+  cursor: pointer;
+}
+
+.slider::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  transform: translateX(-15px);
+  border-radius: 10px;
+  transition: 0.3s;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.25);
+}
+
+.checkbox:checked ~ .slider::before {
+  transform: translateX(15px);
+  box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.25);
+}
+
+.checkbox:checked ~ .slider {
+  background-color: #2196F3;
+}
+
+.checkbox:active ~ .slider::before {
+  transform: translate(0);
+}/*# sourceMappingURL=ThemeMovie.module.css.map */

@@ -1,0 +1,42 @@
+.menuPane {
+  position: fixed;
+  top: 20%;
+  left: 0;
+  padding: 4px 0;
+  background-color: rgba(0, 0, 0, 0.377);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transform-origin: left center;
+  transition: all 0.3 linear;
+  width: 45px;
+  overflow: hidden;
+}
+.menuPane:hover {
+  width: 180px;
+  transition: width 0.8s linear;
+  background-color: rgba(41, 41, 41, 0.7);
+}
+
+.subMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: -moz-max-content;
+  width: max-content;
+  margin-left: 2px;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+.subMenu .icon {
+  font-size: 30px;
+  margin-right: 8px;
+}
+.subMenu span {
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.subMenu span:hover {
+  color: #fff;
+}/*# sourceMappingURL=Menu.module.css.map */
