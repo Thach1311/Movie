@@ -115,6 +115,7 @@ function MoviesRow(props) {
                                 </div>
                             );
                         }
+                        return index;
                     })}
             </MovieSlider>
 

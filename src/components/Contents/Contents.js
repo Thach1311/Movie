@@ -35,17 +35,16 @@ function Contents(props) {
         dispatch(ACTIONS.getDocumentaries());
     }, [dispatch]);
 
-    console.log(NetflixOriginals);
     return (
         <div>
-            <MoviesRows idSection = 'netFlix' movies={NetflixOriginals} title="Netflix Originals" isNetFlix={true} />
-            <MoviesRows idSection = 'trendingMovies' movies={TrendingMovies} title="Trending Movies" />
-            <MoviesRows idSection = 'topRatedMovies' movies={TopRateMovies} title="Top Rated Movies" />
-            <MoviesRows idSection = 'actionMovies' movies={ActionMovies} title="Actions Movies" />
-            <MoviesRows idSection = 'comedyMovies' movies={ComedyMovies} title="Comedy Movies" />
-            <MoviesRows idSection = 'romanceMovies' movies={HorrorMovies} title="Romance Movies" />
-            <MoviesRows idSection = 'horrorMovies' movies={RomanceMovies} title="Horor Movies" />
-            <MoviesRows idSection = 'documentaries' movies={Documentaries} title="Documentaries" />
+            <MoviesRows idSection="netFlix" movies={NetflixOriginals} title="Netflix Originals" isNetFlix={true} />
+            <MoviesRows idSection="trendingMovies" movies={TrendingMovies} title="Trending Movies" />
+            <MoviesRows idSection="topRatedMovies" movies={TopRateMovies} title="Top Rated Movies" />
+            <MoviesRows idSection="actionMovies" movies={ActionMovies} title="Actions Movies" />
+            <MoviesRows idSection="comedyMovies" movies={ComedyMovies} title="Comedy Movies" />
+            <MoviesRows idSection="romanceMovies" movies={HorrorMovies} title="Romance Movies" />
+            <MoviesRows idSection="horrorMovies" movies={RomanceMovies} title="Horor Movies" />
+            <MoviesRows idSection="documentaries" movies={Documentaries} title="Documentaries" />
             <GoToTop
                 onClick={() => scrollToTop()}
                 style={{
